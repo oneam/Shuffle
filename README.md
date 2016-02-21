@@ -13,11 +13,11 @@ Codecov.io Code Coverage Status: [![codecov.io](https://codecov.io/github/oneam/
 Introduction
 ------------
 
-Shuffle takes a single positive integer as input (numValues) and produces a list of integers in the range 1..numValues shuffled in a random order.
+Shuffle takes a single positive integer as input (N) and produces a list of integers in the range 1..N shuffled in a random order.
 
-It's designed to produce the list as fast a reasonably possible regardless of size.
+It uses the [Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher-Yates_shuffle) to produce the list as fast a reasonably possible regardless of size.
 
-For memory and speed reasons, it has a limitation of only producing lists with numValues up to 1 million.
+For speed and memory reasons, it has a limitation of only producing lists with up to 10 million items.
 
 Building Shuffle
 ----------------

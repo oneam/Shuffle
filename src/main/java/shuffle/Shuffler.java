@@ -25,12 +25,13 @@ public class Shuffler {
 
     /**
      * Generates a uniformly shuffled array of values from 1 to maxValue.
+     * Uses Fisher-Yates shuffle for speed https://en.wikipedia.org/wiki/Fisher-Yates_shuffle
      * 
-     * @param numValues Number of values to return (must be between 1 and 1000000)
+     * @param numValues Number of values to return (must be between 1 and 10000000)
      * @return a uniformly shuffled array of values from 1 to numValues
      */
     int[] generateShuffledValues(int numValues) {
-        Validate.inclusiveBetween(1, 1000000, numValues, "numValues must be between 1 and 1000000");
+        Validate.inclusiveBetween(1, 10000000, numValues, "numValues must be between 1 and 10000000");
 
         Random r = new Random();
         int[] values = new int[numValues];

@@ -36,7 +36,7 @@ public class ShuffleApplication {
      */
     int run(String... args) {
         Options options = new Options();
-        options.addOption("n", "num-values", true, "Number of values in the shuffled set. This value must be an integer between 1 and 1000000.");
+        options.addOption("n", "num-values", true, "Number of values in the shuffled set. This value must be an integer between 1 and 10000000.");
         options.addOption("h", "help", false, "Displays this help message");
 
         try {
@@ -55,8 +55,8 @@ public class ShuffleApplication {
             }
 
             int maxValue = Integer.parseInt(cmd.getOptionValue("num-values"));
-            if (maxValue < 1 || maxValue > 1000000) {
-                System.err.println("num-values parameter must be an integer between 1 and 1000000.");
+            if (maxValue < 1 || maxValue > 10000000) {
+                System.err.println("num-values parameter must be an integer between 1 and 10000000.");
                 return 4;
             }
 
@@ -70,7 +70,7 @@ public class ShuffleApplication {
             printHelp(options);
             return 2;
         } catch (NumberFormatException e) {
-            System.err.println("num-values parameter must be an integer between 1 and 1000000.");
+            System.err.println("num-values parameter must be an integer between 1 and 10000000.");
             printHelp(options);
             return 3;
         }

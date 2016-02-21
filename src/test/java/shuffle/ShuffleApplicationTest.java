@@ -83,7 +83,7 @@ public class ShuffleApplicationTest {
 
     @Test
     public void test_num_values_too_big() {
-        int status = app.run("-n", "2000000");
+        int status = app.run("-n", "20000000");
         Assert.assertNotEquals(status, 0, "status");
     }
 
