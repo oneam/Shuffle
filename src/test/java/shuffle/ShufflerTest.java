@@ -16,38 +16,51 @@ package shuffle;
 
 import java.util.Arrays;
 
-import org.apache.commons.math3.stat.inference.ChiSquareTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ShufflerTest {
 
+    /**
+     * A standard normal distribution should have a first moment of 1/2 and second moment of 1/3
+     * 
+     * https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)#Moments_and_parameters
+     */
     @Test
-    // Assert that the values are randomly shuffled
-    public void test_randomness() {
+    public void test_uniform_distrbution() {
         Shuffler shuffler = new Shuffler();
         int numExecutions = 10000;
         int numValues = 10000;
 
-        long[] observed = new long[numValues];
+        double[] s1 = new double[numValues];
+        double[] s2 = new double[numValues];
+
         for (int i = 0; i < numExecutions; ++i) {
             int[] values = shuffler.generateShuffledValues(numValues);
             for (int j = 0; j < numValues; ++j) {
-                observed[j] += values[j];
+                double v = ((double) values[j] - 1.0) / ((double) numValues - 1.0); // Normalized value [0..1]
+                s1[j] += v;
+                s2[j] += v * v;
             }
         }
 
-        double expectedValue = (double) (numExecutions * (numValues + 1)) / 2.0;
-        double[] expected = new double[numValues];
-        Arrays.fill(expected, expectedValue);
+        double expectedM1 = 1.0 / 2.0;
+        double expectedM2 = 1.0 / 3.0;
 
-        ChiSquareTest chiSquareTest = new ChiSquareTest();
-        Assert.assertTrue(chiSquareTest.chiSquareTest(expected, observed, 0.01), "10000 samples are shuffled randomly within a 99% confidence interval");
+        for (int i = 0; i < numExecutions; ++i) {
+            double actualM1 = s1[i] / (double) numExecutions;
+            Assert.assertEquals(actualM1, expectedM1, 0.02, "m1 value outside of 98% confidence");
+
+            double actualM2 = s2[i] / (double) numExecutions;
+            Assert.assertEquals(actualM2, expectedM2, 0.02, "m2 value outside of 98% confidence");
+        }
     }
 
+    /**
+     * Assert that the values are in fact 1..maxValue and don't repeat
+     */
     @Test
-    // Assert that the values are in fact 1..maxValue
-    public void test_correctness() {
+    public void test_correct_values() {
         Shuffler shuffler = new Shuffler();
         int numExecutions = 10000;
         int numValues = 10000;
