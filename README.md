@@ -59,7 +59,7 @@ To get a full list of options.
 Testing Shuffle
 ---------------
 
-Shuffle has a full suite of unit tests. The tests are designed to ensure that the application will perform as expectd given values input and also designed to ensure that the lists produced are a truely randomized set of values.
+Shuffle has a full suite of unit tests. The tests are designed to ensure that the application will perform as expected given valid input and also ensures that the lists produced are a sufficiently randomized set of values.
 
 In order to run the unit tests included in Shuffle, use Gradle's check target:
 
@@ -74,4 +74,4 @@ Under the shuffle package, there are 2 groups of tests:
 * ShuffleApplicationTest tests ensure that Shuffle accepts and processes valid input.
 * ShufflerTest ensures that the output produced by Shuffle is correct and suitably shuffled.
 
-Code coverage results can be viewed by opening `build/reports/jacoco/test/html/index.html`. This data is a reflection of the data reported by Codecov above.
+Code coverage results can be viewed by opening `build/reports/jacoco/test/html/index.html`. This data is a reflection of the data reported by [Codecov.io](https://codecov.io/github/oneam/Shuffle/coverage.svg?branch=master).
