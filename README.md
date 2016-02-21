@@ -74,4 +74,4 @@ Under the shuffle package, there are 2 groups of tests:
 * ShuffleApplicationTest tests ensure that Shuffle accepts and processes valid input.
 * ShufflerTest ensures that the output produced by Shuffle is correct and suitably shuffled.
 
-Code coverage results can be viewed by opening `build/reports/jacoco/test/html/index.html`. This data is a reflection of the data reported by [Codecov.io](https://codecov.io/github/oneam/Shuffle/coverage.svg?branch=master).
+Code coverage results can be viewed by opening `build/reports/jacoco/test/html/index.html`. This data is a reflection of the data reported by [Codecov.io](https://codecov.io/github/oneam/Shuffle?branch=master).
