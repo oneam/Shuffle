@@ -96,6 +96,6 @@ public class ShuffleApplication {
     public static void main(String[] args) {
         ShuffleApplication shuffle = new ShuffleApplication();
         int status = shuffle.run(args);
-        System.exit(status);
+        if (status != 0) System.exit(status);
     }
 }
